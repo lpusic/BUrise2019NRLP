@@ -22,13 +22,13 @@ runsAll = 5
 nTrials = 1
     
 learning='locomotion'
-print "\nLEARNING: ", learning
-print
-print
+print("\nLEARNING: ", learning)
+print()
+print()
 spec='data_analysis'
 path_figs = spec+'/figures_plasticity/'
 os.system('mkdir -p '+ path_figs)
-file_load = spec+'/metrics/'+learning
+file_load = spec+'/metrics_permutations/'+learning #LP changed metrics to metrics_permutations
 trials = [str(i) for i in range(1, nTrials+1)]
 maindir=os.getcwd()
  
@@ -37,12 +37,12 @@ my_list = ['Control','No_VIPcells','No_VIPCR', 'No_VIPCCK', 'No_VIPNVM','No_VIPP
 my_list=['Control']
 
 for case in my_list:
-    print "CASE:",case
+    print("CASE:",case)
     for ntrial in trials:
         theoretical_cells  = np.loadtxt('../'+fnames+learning+'/'+case+'/Trial_'+ntrial+'/Run_1/input_conv2.txt', delimiter=',')
         theoretical_fields = [int(x) for x in list(theoretical_cells[:,1])]
         theoretical_cells  = [int(x) for x in list(theoretical_cells[:,0])]
-        print "TRIAL:",ntrial
+        print("TRIAL:",ntrial)
 
         with open(file_load+'/pickled_sn_'+case+'_'+ntrial+'.pkl', 'rb') as f:
             loaded_data=pickle.load(f)
@@ -50,7 +50,7 @@ for case in my_list:
         rateMaps = loaded_data['maps']
         
         indices_cells = []
-        for npyr in xrange(Npyramidals):
+        for npyr in range(Npyramidals):
                             
             if npyr in theoretical_cells:
                 rate_map = rateMaps[npyr,:,:]

@@ -68,7 +68,7 @@ STARTDEL = 500  // msecs
 THETA    = 125 // msecs (8 Hz)
 GAMMA    = 25  // msecs (40 Hz)
 
-duration = 172 // total time of "active" simulation
+duration = 1 // total time of "active" simulation, turn back to 172
 
 SIMDUR = TINIT + (THETA*duration) + STARTDEL/10 // simulation duration (msecs)
 
@@ -85,7 +85,7 @@ ndend = 8
 probability = 0.40 // probability of place cell formation
 
 scale     = 1
-npcell    = 130*scale
+npcell    = 13*scale // Turn back to 130
 naacell   = 2*scale   
 nbcell    = 8*scale   
 nbscell   = 2*scale 

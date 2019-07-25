@@ -6,7 +6,7 @@ import numpy as np
 
 time1=time.time()
 
-def extract_spiketimes(neuron_type,condition,ntrial,nrun):
+def extract_spiketimes(neuron_type,learning,condition,ntrial,nrun):
     '''
     Extract Spike Times from NEUORN's voltage trace
     Nneurons: number of neurons to be analyzed
@@ -21,8 +21,8 @@ def extract_spiketimes(neuron_type,condition,ntrial,nrun):
     delta = 1
     
     if neuron_type=='_pvsoma_':
-        Nneurons=130
-        thres = 5 " remove spikelets
+        Nneurons=13 #LP return back to 130
+        thres = 5 # remove spikelets
     elif neuron_type=='_bcell_':
         Nneurons=8
         thres = 0
@@ -36,9 +36,9 @@ def extract_spiketimes(neuron_type,condition,ntrial,nrun):
         Nneurons=2
         thres = 0
         
-    print Nneurons
+    print(Nneurons)
     spiketimes_all=[]
-    for n_neuron in xrange(Nneurons):
+    for n_neuron in range(Nneurons):
 
         
         filename = filepath+'/Trial_'+ntrial+'_Run_'+nrun+neuron_type+str(n_neuron)+'.dat'
@@ -63,14 +63,15 @@ def extract_spiketimes(neuron_type,condition,ntrial,nrun):
         pickle.dump(spiketimes_all, handle, protocol=pickle.HIGHEST_PROTOCOL)
             
 
-ntype    = sys.argv[1]
-cond     = sys.argv[2]
-trial    = sys.argv[3]
-run      = sys.argv[4]
+neuron_type = sys.argv[1]
+learning    = sys.argv[2]
+cond        = sys.argv[3]
+trial       = sys.argv[4]
+nrun        = sys.argv[5]
 
-results = extract_spiketimes(ntype, cond, trial, run)
+results = extract_spiketimes(neuron_type, learning, cond, trial, nrun)
 
-print "\nEverything was ok for cell type "+neuron_type[1:-1]+". Case: "+cond+" "+str(trial)+" "+str(run)
+print("\nEverything was ok for cell type "+neuron_type[1:-1]+". Case: "+cond+" "+str(trial)+" "+str(nrun))
 time2=time.time()
 duration = round(time2-time1,3)
-print "\n The analysis run for "+str(duration)+" seconds"
+print("\n The analysis run for "+str(duration)+" seconds")
