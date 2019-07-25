@@ -1,0 +1,1 @@
+../mechanisms//nmda.mod
