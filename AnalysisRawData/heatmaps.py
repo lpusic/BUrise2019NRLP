@@ -18,6 +18,8 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 
 
+print seven
+
 def analysis_path_cluster(ntrial,case,learning):
     
     folder1='data_analysis'
@@ -27,7 +29,7 @@ def analysis_path_cluster(ntrial,case,learning):
     fdname1 = '/'+folder1+'/figures/'
     fdname2 = '/'+folder1+'/metrics/'
 
-    print "Analyse ... " + case +" trial "+ntrial +" " +learning 
+    print("Analyse ... " + case +" trial "+ntrial +" " +learning)
     
     os.system('mkdir -p '+folder1+'/figures/'+learning+'/')
     os.system('mkdir -p '+folder1+'/metrics/'+learning+'/')
@@ -115,7 +117,7 @@ def analysis_path_cluster(ntrial,case,learning):
         time_array_in_bin[int(npyr),:,:]   = time_array_all.reshape(-1,1)
         
 
-    print '\nDone with the rate maps'
+    print('\nDone with the rate maps')
 
 
     fig, axes = plt.subplots(nrows=13, ncols=10,figsize=(20, 20))
@@ -180,7 +182,7 @@ def analysis_path_cluster(ntrial,case,learning):
     with open(filesave+'/pickled_sn_'+case+'_'+ntrial+'.pkl', 'wb') as handle:
         pickle.dump(mydict, handle, protocol=pickle.HIGHEST_PROTOCOL)
         
-    print "\nDone with "+case+" analysis. Done with trial "+ntrial
+    print("\nDone with "+case+" analysis. Done with trial "+ntrial)
 
 
 tic      = time.time()
@@ -190,4 +192,4 @@ learning = sys.argv[3]
 results  = analysis_path_cluster(ntrial,case,learning)
 toc      = time.time()
 
-print "\nTotal time: "+str(round(toc-tic,3))+" seconds"
+print("\nTotal time: "+str(round(toc-tic,3))+" seconds")
