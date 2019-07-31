@@ -71,7 +71,7 @@ cd ValidationTests
 
 # To create the plots shown in Figure S7 (A-D) after executing NEURON for all cells and NMDA synapses for Pyramidal, run
 
-# python synaptic_validation_plots.py <neuronal_type>
+# python2 synaptic_validation_plots.py <neuronal_type>
 
 # Valid values for <neuronal_type>
 
@@ -85,7 +85,7 @@ cd ValidationTests
 
 ## Inputs from EC LIII and CA3 SC
 
-python synaptic_validation_plots.py EC_CA3
+python2 synaptic_validation_plots.py EC_CA3
 
 
 
@@ -96,21 +96,21 @@ cd make_inputs_linear_track
 
 In a command line execute
 
-python make_grid_like_inputs_speed_prelearning.py <run_number>
-python make_grid_like_inputs_speed_mod.py <run_number>
+python2 make_grid_like_inputs_speed_prelearning.py <run_number>
+python2 make_grid_like_inputs_speed_mod.py <run_number>
 
 # <run_number> is a specific run form one edge of the track to the other. To replicate the figures one needs 5 runs
 
 # After the simulation of all runs create the grid-like inputs by executing
-python glim_v2_prelearning.py <total_number_of_runs>
-python glim_v2_speed_mod.py <total_number_of_runs> <modulation_type> # <modulation_type> is 'pos' or 'neg', e.g., python glim_v2_speed_mod.py 5 pos
+python2 glim_v2_prelearning.py <total_number_of_runs>
+python2 glim_v2_speed_mod.py <total_number_of_runs> <modulation_type> # <modulation_type> is 'pos' or 'neg', e.g., python2 glim_v2_speed_mod.py 5 pos
 
 # Then enter background_noise directory
 cd ../background_noise
 
 # create the background noise by executing 
 
-python poisson_input.py <total_number_of_runs> <poisson_rate>  # e.g., poisson_input.py 5 5
+python2 poisson_input.py <total_number_of_runs> <poisson_rate>  # e.g., poisson_input.py 5 5
 
 
 #################### PRELEARNING SIMULATIONS #######################################################################
@@ -162,9 +162,9 @@ cd AnalysisRawData
 
 # Exctract spike times
 
-python spiketimes_analysis.py <neuron_type> <learning_mode> <deletion_type> <number_of_trial> <number_of_run>
+python2 spiketimes_analysis.py <neuron_type> <learning_mode> <deletion_type> <number_of_trial> <number_of_run>
 
-python spiketimes_analysis.py _pysoma_ prelearning Control 1 1
+python2 spiketimes_analysis.py _pysoma_ prelearning Control 5 5
 
 # Valid <neuron_type> values:
 
@@ -187,7 +187,7 @@ python spiketimes_analysis.py _pysoma_ prelearning Control 1 1
 
 # After the analysis for all trials, runs and deletions execute:
 
-python all_path_all_spiketimes.py <learning_mode> # e.g., python all_path_all_spiketimes.py locomotion
+python2 all_path_all_spiketimes.py <learning_mode> # e.g., python2 all_path_all_spiketimes.py locomotion
 
 # This will create the subfolder data_analysis/locomotion/metrics_permutations
 # or
@@ -195,7 +195,7 @@ python all_path_all_spiketimes.py <learning_mode> # e.g., python all_path_all_sp
 # where the spiketimes and the path for all cases is stored (for better handling)
 
 # Then execute the command below to calculate whose cell firing rate is above the threshold in the reward zone
-python plasticity_indices.py
+python2 plasticity_indices.py
 
 # This command will create a .txt file in Simulation_Results/<learning_mode>/<deletion_type>/Trial_<trial_number> 
 # with the indices of the cells undergo plasticity
@@ -218,14 +218,14 @@ cd ../
 # Go to AnalysisRawData directory
 cd AnalysisRawData
 
-python spiketimes_analysis.py <neuron_type> <learning_mode> <deletion_type> <number_of_trial> <number_of_run> # for all runs, trials, neuronal_types etc.
+python2 spiketimes_analysis.py <neuron_type> <learning_mode> <deletion_type> <number_of_trial> <number_of_run> # for all runs, trials, neuronal_types etc.
 
-python all_path_all_spiketimes.py <learning_mode> # for all learning modes, except for locomotion (see above)
+python2 all_path_all_spiketimes.py <learning_mode> # for all learning modes, except for locomotion (see above)
 
 
-python heatmaps.py <number_of_trial> <deletion_type> <learning_mode> # this produces heatmps and all metrics per deletion and per trial
+python2 heatmaps.py <number_of_trial> <deletion_type> <learning_mode> # this produces heatmps and all metrics per deletion and per trial
 
-python heatmaps_interneurons.py <number_of_trial> <deletion_type> <learning_mode> <interneuronal_type> # same as the above, but now for interneurons
+python2 heatmaps_interneurons.py <number_of_trial> <deletion_type> <learning_mode> <interneuronal_type> # same as the above, but now for interneurons
 
 # valid <interneuronal_type>: 
 
@@ -239,10 +239,10 @@ python heatmaps_interneurons.py <number_of_trial> <deletion_type> <learning_mode
 
 
 
-python all_trials_paper_all.py # produces the altogether heatmaps
-python all_trials_paper_all_interneurons.py # produces the altogether heatmaps
+python2 all_trials_paper_all.py # produces the altogether heatmaps
+python2 all_trials_paper_all_interneurons.py # produces the altogether heatmaps
 
-python all_trials_enrichment.py # produces the barplot with the enrichment for all deletion types and learning modes
+python2 all_trials_enrichment.py # produces the barplot with the enrichment for all deletion types and learning modes
 
 
 # for more information, refer to the comments inside the scripts or contact me in: chavlis [DOT] spiros [AT] gmail [DOT] com
